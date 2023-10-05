@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chrsh\\projects\\TrailFinder\\App\\TrailFinder.csproj",
+      "projectUniqueName": "C:\\Users\\chrsh\\projects\\TrailFinder\\TrailFinder.csproj",
       "projectName": "TrailFinder",
-      "projectPath": "C:\\Users\\chrsh\\projects\\TrailFinder\\App\\TrailFinder.csproj",
+      "projectPath": "C:\\Users\\chrsh\\projects\\TrailFinder\\TrailFinder.csproj",
       "packagesPath": "C:\\Users\\chrsh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chrsh\\projects\\TrailFinder\\App\\obj\\",
+      "outputPath": "C:\\Users\\chrsh\\projects\\TrailFinder\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\chrsh\\AppData\\Roaming\\NuGet\\NuGet.Config"
