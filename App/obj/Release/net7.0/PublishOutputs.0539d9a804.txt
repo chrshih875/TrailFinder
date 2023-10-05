@@ -1,0 +1,5 @@
+C:\Users\chrsh\projects\TrailFinder\App\bin\Release\net7.0\publish\TrailFinder.exe
+C:\Users\chrsh\projects\TrailFinder\App\bin\Release\net7.0\publish\TrailFinder.dll
+C:\Users\chrsh\projects\TrailFinder\App\bin\Release\net7.0\publish\TrailFinder.deps.json
+C:\Users\chrsh\projects\TrailFinder\App\bin\Release\net7.0\publish\TrailFinder.runtimeconfig.json
+C:\Users\chrsh\projects\TrailFinder\App\bin\Release\net7.0\publish\TrailFinder.pdb
