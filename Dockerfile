@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 WORKDIR /App
-
+EXPOSE 80
 # Copy everything
 COPY . ./
 # Restore as distinct layers
@@ -13,3 +13,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /App
 COPY --from=build-env /App/out .
 ENTRYPOINT ["dotnet", "TrailFinder.dll"]
+
+
+# docker build -t counter-image -f Dockerfile .
+# docker create --name core-counter counter-image
