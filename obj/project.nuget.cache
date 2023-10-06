@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "drSvG9YEDoxJDQt/rMIyBwgXae/52VafYSvTGdZ28+URY6yA0qV7fZaA9T31qzv2wtq6ytiO6X2U3Eb5O0UUrA==",
+  "dgSpecHash": "y5CzK6bjAym38suW+FO5dL3PvUUU3gy/cqimJEE/IeZ1OfmxUzdDtbQzsX9g8Nd0Iv4VpDmJAs5bxFqHS2NtIQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\chrsh\\projects\\TrailFinder\\TrailFinder.csproj",
   "expectedPackageFiles": [
@@ -47,6 +47,7 @@
     "C:\\Users\\chrsh\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\chrsh\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\chrsh\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\chrsh\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\chrsh\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\chrsh\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\chrsh\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.5.0\\system.diagnostics.diagnosticsource.4.5.0.nupkg.sha512",

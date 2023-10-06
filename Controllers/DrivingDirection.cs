@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Models;
+using Newtonsoft.Json.Linq;
 
 namespace Controllers
 {
@@ -7,7 +9,7 @@ namespace Controllers
 public class DrivingInput : Controller
 {
     [HttpGet("/direction")]
-    public async Task<string> GetDirections(DrivingDirection input)
+    public async Task<ActionResult<object>> GetDirections(DrivingDirection input)
     {
         try
         {
@@ -24,19 +26,25 @@ public class DrivingInput : Controller
                 { "X-RapidAPI-Host", "driving-directions1.p.rapidapi.com" },
             },
         };
-        Console.WriteLine(request.RequestUri);
-
-        // using (var response = await client.SendAsync(request))
-        {
-        //     response.EnsureSuccessStatusCode();
-        //     var body = await response.Content.ReadAsStringAsync();
-        //     Console.WriteLine(body);
-        return "huh";
-            // return body;
-        }
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(body);
+                JObject jsonObject = JObject.Parse(body);
+                if (jsonObject["data"] == null || string.IsNullOrWhiteSpace(jsonObject["data"]?.ToString())){
+                    Console.WriteLine("DATA WAS NULL");
+                    throw new Exception();
+                }
+                else
+                {
+                    return Ok(body);
+                }
+            }
         }
         catch (Exception e)
         {
+            Console.WriteLine("ERROROROR");
             return e.Message;
         }
     }
