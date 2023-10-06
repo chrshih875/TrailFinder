@@ -14,6 +14,6 @@ WORKDIR /App
 COPY --from=build-env /App/out .
 ENTRYPOINT ["dotnet", "TrailFinder.dll"]
 
-
+# dotnet publish -c Release
 # docker build -t counter-image -f Dockerfile .
-# docker create --name core-counter counter-image
+# docker run -p 7080:80 counter-image --name core-counter
