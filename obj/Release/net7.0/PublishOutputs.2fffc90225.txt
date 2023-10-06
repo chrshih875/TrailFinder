@@ -12,4 +12,5 @@ C:\Users\chrsh\projects\TrailFinder\bin\Release\net7.0\publish\Microsoft.Extensi
 C:\Users\chrsh\projects\TrailFinder\bin\Release\net7.0\publish\Microsoft.Extensions.Identity.Core.dll
 C:\Users\chrsh\projects\TrailFinder\bin\Release\net7.0\publish\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\chrsh\projects\TrailFinder\bin\Release\net7.0\publish\Microsoft.Extensions.Options.dll
+C:\Users\chrsh\projects\TrailFinder\bin\Release\net7.0\publish\Newtonsoft.Json.dll
 C:\Users\chrsh\projects\TrailFinder\bin\Release\net7.0\publish\TrailFinder.deps.json
