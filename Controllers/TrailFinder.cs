@@ -20,12 +20,10 @@ namespace Controllers
                         { "X-RapidAPI-Host", "trailapi-trailapi.p.rapidapi.com" },
                     },
                 };
-                Console.WriteLine(request.RequestUri);
                 using (var response = await client.SendAsync(request))
                 {
                     response.EnsureSuccessStatusCode();
                     var body = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine(body);
                     return Ok(body);
                 }
             }

@@ -7,12 +7,12 @@ namespace Controllers
 public class DrivingInput : Controller
     {
         [HttpGet("/direction")]
-        public async Task<ActionResult<object>> GetDirections(DrivingDirection input)
+        public async Task<ActionResult<object>> GetDirections([FromQuery] dynamic input)
         {
             try
             {
-                string newOrigin = input.Origin.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
-                string newEndpoint = input.Endpoint.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
+                string newOrigin = input.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
+                string newEndpoint = input.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
                 var client = new HttpClient();
                 var request = new HttpRequestMessage
             {
@@ -31,7 +31,6 @@ public class DrivingInput : Controller
                     Console.WriteLine(body);
                     JObject jsonObject = JObject.Parse(body);
                     if (jsonObject["data"] == null || string.IsNullOrWhiteSpace(jsonObject["data"]?.ToString())){
-                        Console.WriteLine("DATA WAS NULL");
                         throw new Exception();
                     }
                     else
