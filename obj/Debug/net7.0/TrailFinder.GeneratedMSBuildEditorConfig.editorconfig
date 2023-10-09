@@ -15,3 +15,11 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = c:\Users\chrsh\projects\TrailFinder
 build_property._RazorSourceGeneratorDebug = 
+
+[c:/Users/chrsh/projects/TrailFinder/my-new-app/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bXktbmV3LWFwcFxQYWdlc1xFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/chrsh/projects/TrailFinder/my-new-app/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bXktbmV3LWFwcFxQYWdlc1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
