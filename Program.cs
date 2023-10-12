@@ -5,6 +5,8 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

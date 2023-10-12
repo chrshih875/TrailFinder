@@ -11,6 +11,9 @@ public class DrivingInput : Controller
         {
             try
             {
+                Console.WriteLine(origin.json());
+                Console.WriteLine(destination.json());
+
                 string newOrigin = origin.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
                 string newEndpoint = destination.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
                 var client = new HttpClient();
@@ -24,21 +27,22 @@ public class DrivingInput : Controller
                     { "X-RapidAPI-Host", "driving-directions1.p.rapidapi.com" },
                 },
             };
-                using (var response = await client.SendAsync(request))
-                {
-                    response.EnsureSuccessStatusCode();
-                    var body = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine(body);
-                    JObject jsonObject = JObject.Parse(body);
-                    // jsonObject["data"] == null ||
-                    if (string.IsNullOrWhiteSpace(jsonObject["data"]?.ToString())){
-                        throw new Exception();
-                    }
-                    else
-                    {
-                        return Ok(body);
-                    }
-                }
+                // using (var response = await client.SendAsync(request))
+                return "rip";
+                // {
+                //     response.EnsureSuccessStatusCode();
+                //     var body = await response.Content.ReadAsStringAsync();
+                //     Console.WriteLine(body);
+                //     JObject jsonObject = JObject.Parse(body);
+                //     jsonObject["data"] == null ||
+                //     if (string.IsNullOrWhiteSpace(jsonObject["data"]?.ToString())){
+                //         throw new Exception();
+                //     }
+                //     else
+                //     {
+                //         return Ok(body);
+                //     }
+                // }
             }
             catch (Exception)
             {

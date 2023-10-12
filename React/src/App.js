@@ -1,13 +1,14 @@
 import './App.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { TrailFinder } from './components/TrailFinder';
 
 function App() {
   return (
     <BrowserRouter>
           <div className="container">
-            <Route>
-
-            </Route>
+            <Routes>
+              <Route path="/auth" element={<TrailFinder/>} />
+            </Routes>
           </div>
     </BrowserRouter>
   );

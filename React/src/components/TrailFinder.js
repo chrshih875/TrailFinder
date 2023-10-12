@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { SearchForm } from './SearchForm';
-export const TrailFinder = ({ onSearch }) => {
+export const TrailFinder = () => {
+
     const [Trails, setTrails] = useState([]);
 
     const getTrails = async (Locations) => {
-        axios.get(`http://localhost:7080/trails?latitude=${Locations.data.origin.latitude}&longitude=${Locations.data.origin.longitude}`)
-        .then((response) => setTrails(response.data.json()))
+        await axios.get(`http://localhost:7080/trails?latitude=${Locations.lat}&longitude=${Locations.long}`)
+        .then((response) => setTrails(response))
         .catch((err) => {console.log(err)});
     }
 
     const getDistance = async (info) => {
         axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`)
-        .then((response) => getTrails(response.data.json()))
+        .then((response) =>console.log(response.data))
         .catch((err) => {console.log(err)});
     }
 
     const handleSearch = (locations) => {
-      getTrails(locations);
+      getDistance(locations);
     };
 
     return (

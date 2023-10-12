@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 
 export const SearchForm = ({ onSearch }) => {
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
+  const [origin, setOrigin] = useState('');
+  const [destination, setDestination] = useState('');
 
   const handleSearch = () => {
-    onSearch({ lat: latitude, long: longitude });
+    onSearch({ lat: origin, long: destination });
   };
 
   return (
     <div>
       <input
         type="text"
-        placeholder="Latitude"
-        value={latitude}
-        onChange={(e) => setLatitude(e.target.value)}
+        placeholder="Origin"
+        value={origin}
+        onChange={(e) => setOrigin(e.target.value)}
       />
       <input
         type="text"
-        placeholder="Longitude"
-        value={longitude}
-        onChange={(e) => setLongitude(e.target.value)}
+        placeholder="Destination"
+        value={destination}
+        onChange={(e) => setDestination(e.target.value)}
       />
+      <p></p>
       <button onClick={handleSearch}>Search</button>
     </div>
   );

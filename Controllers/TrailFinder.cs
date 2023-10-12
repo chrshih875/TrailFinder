@@ -9,6 +9,8 @@ namespace Controllers
         {
             try
             {
+                Console.WriteLine(latitude);
+                Console.WriteLine(longitude);
                 var client = new HttpClient();
                 var request = new HttpRequestMessage
                 {
