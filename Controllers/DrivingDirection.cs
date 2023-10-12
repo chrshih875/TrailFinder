@@ -31,7 +31,6 @@ public class DrivingInput : Controller
                     var body = await response.Content.ReadAsStringAsync();
                     Console.WriteLine(body);
                     JObject jsonObject = JObject.Parse(body);
-                    // jsonObject["data"] == null ||
                     if (string.IsNullOrWhiteSpace(jsonObject["data"]?.ToString())){
                         throw new Exception();
                     }
