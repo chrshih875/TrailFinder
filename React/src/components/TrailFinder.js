@@ -15,6 +15,11 @@ export const TrailFinder = ({ onSearch }) => {
         .then((response) => getTrails(response.data.json()))
         .catch((err) => {console.log(err)});
     }
+
+    const handleSearch = (locations) => {
+      getTrails(locations);
+    };
+
     return (
       <div>
         <h1>Trail Finder</h1>
