@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css'; // Import Leaflet CSS
 function MyMapComponent() {
     useEffect(() => {
       // Create a Leaflet map
-      if (!L.DomUtil.get('map')) {
+      if (!L.DomUtil.get('map')) { //to check if the map has been initilaized
       const map = L.map('map').setView([51.505, -0.09], 13);
 
       // Create a tile layer for the map
