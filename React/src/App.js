@@ -1,6 +1,8 @@
 import './App.css';
+import 'leaflet/dist/leaflet.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { TrailFinder } from './components/TrailFinder';
+import MyMapComponent from './components/Map';
 
 function App() {
   return (
@@ -8,6 +10,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/auth" element={<TrailFinder/>} />
+              <Route path="/map" element={<MyMapComponent/>} />
             </Routes>
           </div>
     </BrowserRouter>
