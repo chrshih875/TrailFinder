@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Map, TileLayer, Marker } from 'react-leaflet';
 import { SearchForm } from './SearchForm';
 export const TrailFinder = () => {
     const [direction, setDirection] = useState([]);
@@ -40,10 +41,21 @@ export const TrailFinder = () => {
     };
 
     return (
+    <>
       <div>
         <h1>Trail Finder</h1>
         <SearchForm onSearch={handleSearch} />
         {/* Display the Trails and Locations based on API data */}
       </div>
+      <Map center={[latitude, longitude]} zoom={13} style={{ height: '500px', width: '100%' }}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <Marker position={[latitude, longitude]}>
+          {/* Add custom marker content if needed */}
+        </Marker>
+      </Map>
+    </>
     );
 }
