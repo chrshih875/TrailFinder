@@ -10,7 +10,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/auth" element={<TrailFinder/>} />
-              <Route path="/map" element={<MyMapComponent/>} />
+              <Route path="/" element={<MyMapComponent/>} />
             </Routes>
           </div>
     </BrowserRouter>

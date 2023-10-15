@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { TileLayer, Marker, MapContainer } from 'react-leaflet';
 import { SearchForm } from './SearchForm';
+import MyMapComponent from './Map';
 export const TrailFinder = () => {
     const [direction, setDirection] = useState([]);
     const [trail, setTraill] = useState([]);
@@ -40,22 +40,16 @@ export const TrailFinder = () => {
       getTrails(direction);
     };
 
-      <MapContainer center={[33.918851108350594, -117.7375697654812]} zoom={20} style={{ height: '6000px', width: '200%' }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        <Marker position={[33.83419612537142, -117.73639818762177]}>
-          {/* Add custom marker content if needed */}
-        </Marker>
-      </MapContainer>
     return (
-    <>
-      <div>
-        <h1>Trail Finder</h1>
-        <SearchForm onSearch={handleSearch} />
-        {/* Display the Trails and Locations based on API data */}
+      <div style={{ position: 'relative' }}>
+      <MyMapComponent />
+      <div className="overlay">
+        <div className="overlay-container">
+          <h1>Trail Finder</h1>
+          <SearchForm onSearch={handleSearch} />
+        </div>
       </div>
-    </>
+      {/* Display the Trails and Locations based on API data */}
+    </div>
     );
 }
