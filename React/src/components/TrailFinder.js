@@ -28,7 +28,7 @@ export const TrailFinder = () => {
       return response;
     };
 
-    const getDistance = async (info) => {
+    const getDistance = (info) => {
         axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`)
         .then((response) =>setDirection(response.data.data))
         .catch((err) => {console.log(err)});
