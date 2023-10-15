@@ -27,7 +27,7 @@ export const TrailFinder = () => {
 
     const getDistance = (info) => {
         axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`)
-        .then((response) =>setDirection(response.data.data))
+        .then((response) => setDirection(response.data.data))
         .catch((err) => {console.log(err)});
     }
 
@@ -39,7 +39,7 @@ export const TrailFinder = () => {
 
     return (
       <div style={{ position: 'relative' }}>
-      <MyMapComponent trails = {trail}/>
+      <MyMapComponent trails={trail}/>
       <div className="overlay">
         <div className="overlay-container">
           <h1>Trail Finder</h1>
