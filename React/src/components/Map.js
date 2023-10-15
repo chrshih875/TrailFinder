@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet'; // Import Leaflet
 import 'leaflet/dist/leaflet.css'; // Import Leaflet CSS
 
-function MyMapComponent() {
+function MyMapComponent({trails}) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
 
@@ -23,8 +23,15 @@ function MyMapComponent() {
       L.control.zoom({
         position: 'bottomright'
       }).addTo(mapRef.current);
+
+      if (trails) {
+        // Loop through the 'trails' data and add markers, polylines, or other map features
+        trails.forEach((trail) => {
+          L.marker([trail.latitude, trail.longitude]).addTo(mapRef.current);
+        });
+      }
     }
-  }, []);
+  }, [trails]);
 
   return <div ref={mapContainerRef} style={{ width: '100vw', height: '100vh',  overflow: 'hidden' }}></div>;
 }

@@ -11,8 +11,8 @@ export const TrailFinder = () => {
       try {
         const data = getAvergae(Locations);
         console.log("Data", data);
-        const response1 = await axios.get(`http://localhost:7080/trails?latitude=${data.point1}&longitude=${data.point2}`);
-        console.log(response1);
+        await axios.get(`http://localhost:7080/trails?latitude=${data.point1}&longitude=${data.point2}`)
+        .then((response) => setTraill(response));
       } catch (err) {
         console.log(err);
       }
@@ -21,10 +21,7 @@ export const TrailFinder = () => {
     const getAvergae = (dataPoints) => {
       const x = (dataPoints.origin.latitude + dataPoints.destination.latitude) / 2;
       const y = (dataPoints.origin.longitude + dataPoints.destination.longitude) / 2;
-      const response = {
-        point1: x,
-        point2: y
-      };
+      const response = { point1: x, point2: y };
       return response;
     };
 
@@ -42,7 +39,7 @@ export const TrailFinder = () => {
 
     return (
       <div style={{ position: 'relative' }}>
-      <MyMapComponent />
+      <MyMapComponent trails = {trail}/>
       <div className="overlay">
         <div className="overlay-container">
           <h1>Trail Finder</h1>
