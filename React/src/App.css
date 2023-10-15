@@ -51,10 +51,3 @@
   border-radius: 20px; /* Add rounded corners */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
 }
-
-/* Style for the zoom control */
-.leaflet-control-zoom {
-  position: absolute;
-  bottom: 10px; /* Adjust the distance from the bottom as needed */
-  right: 10px; /* Adjust the distance from the right as needed */
-}

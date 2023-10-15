@@ -49,7 +49,6 @@ export const TrailFinder = () => {
           <SearchForm onSearch={handleSearch} />
         </div>
       </div>
-      {/* Display the Trails and Locations based on API data */}
     </div>
     );
 }
