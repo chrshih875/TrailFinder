@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import React, { useEffect, useRef } from 'react';
+import L from 'leaflet'; // Import Leaflet
+import 'leaflet/dist/leaflet.css'; // Import Leaflet CSS
 
 function MyMapComponent() {
-  const [mapInitialized, setMapInitialized] = useState(false);
+  const mapContainerRef = useRef(null);
+  const mapRef = useRef(null);
 
   useEffect(() => {
-    if (!mapInitialized) {
-      const map = L.map('map').setView([51.505, -0.09], 13);
+    if (!mapRef.current) {
+      // Initialize the map only if it's not already initialized
+      mapRef.current = L.map(mapContainerRef.current).setView([51.505, -0.09], 13);
 
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      }).addTo(map);
-
-      // Update the state to indicate that the map has been initialized
-      setMapInitialized(true);
+      }).addTo(mapRef.current);
     }
-  }, [mapInitialized]);
+  }, []);
 
-  return <div id="map" style={{ width: '100%', height: '500px' }}></div>;
+  return <div ref={mapContainerRef} style={{ width: '100vw', height: '100vh',  overflow: 'hidden' }}></div>;
 }
 
 export default MyMapComponent;
