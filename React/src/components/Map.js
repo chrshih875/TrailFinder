@@ -24,12 +24,15 @@ function MyMapComponent({trails}) {
         position: 'bottomright'
       }).addTo(mapRef.current);
 
-      if (trails) {
+      // if (trails) {
         // Loop through the 'trails' data and add markers, polylines, or other map features
-        trails.forEach((trail) => {
-          L.marker([trail.latitude, trail.longitude]).addTo(mapRef.current);
-        });
-      }
+        // trails.forEach((trail) => {
+          L.marker([
+            // trail.latitude, trail.longitude
+            33.8060874877058, -117.86948974053679
+          ]).addTo(mapRef.current);
+        // });
+      // }
     }
   }, [trails]);
 
