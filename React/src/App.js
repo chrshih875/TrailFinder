@@ -9,8 +9,8 @@ function App() {
     <BrowserRouter>
           <div className="container">
             <Routes>
-              <Route path="/auth" element={<TrailFinder/>} />
-              <Route path="/" element={<MyMapComponent/>} />
+              <Route path="/" element={<TrailFinder/>} />
+              {/* <Route path="/" element={<MyMapComponent/>} /> */}
             </Routes>
           </div>
     </BrowserRouter>
