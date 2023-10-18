@@ -4,17 +4,13 @@ import { SearchForm } from './SearchForm';
 import MyMapComponent from './Map';
 export const TrailFinder = () => {
     const [direction, setDirection] = useState([]);
-    // const [direction, setDirection] = useState({ point1: 33.806, point2: -117.8694897 });
 
     const [trail, setTraill] = useState([]);
 
     const getTrails = async (Locations) => {
-      // console.log("HELLO", Locations.point1)
       try {
         const data = getAvergae(Locations);
-        // console.log("Data", data);
         await axios.get(`http://localhost:7080/trails?latitude=${data.point1}&longitude=${data.point2}`)
-        // await axios.get(`http://localhost:7080/trails?latitude=${Locations.point1}&longitude=${Locations.point2}`)
         .then((response) => setTraill(response.data.data));
       } catch (err) {
         console.log(err);
