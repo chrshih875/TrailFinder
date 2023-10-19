@@ -11,20 +11,23 @@ public class DrivingInput : Controller
         {
             try
             {
-
-                string newOrigin = info.Origin.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
-                string newEndpoint = info.Endpoint.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
+                Console.WriteLine("INFO");
+                Console.WriteLine(info);
+                // string newOrigin = info.Origin.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
+                // string newEndpoint = info.Endpoint.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
                 var client = new HttpClient();
                 var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://driving-directions1.p.rapidapi.com/get-directions?origin={newOrigin}&destination={newEndpoint}&avoid_routes=tolls%2Cferries&country=us&language=en"),
+                RequestUri = new Uri($"https://driving-directions1.p.rapidapi.com/get-directions?origin={info.Origin}&destination={info.Endpoint}&avoid_routes=tolls%2Cferries&country=us&language=en"),
                 Headers =
                 {
                     { "X-RapidAPI-Key", "ce488d6175mshd2b44358611a4acp18b00ejsne323d1f14bf7" },
                     { "X-RapidAPI-Host", "driving-directions1.p.rapidapi.com" },
                 },
             };
+            Console.WriteLine("REQUEST URL");
+            Console.WriteLine(request.RequestUri);
                 using (var response = await client.SendAsync(request))
                 {
                     response.EnsureSuccessStatusCode();
