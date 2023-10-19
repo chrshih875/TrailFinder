@@ -37,6 +37,7 @@ export const TrailFinder = () => {
 
     const handleSearch = async (locations) => {
       setSearch(true)
+      console.log("Locaations", locations)
       const distanceResponse = await getDistance(locations);
       console.log(direction)
       // console.log("distanceresponse", distanceResponse);
