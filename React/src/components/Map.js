@@ -28,8 +28,11 @@ function MyMapComponent({ trails }) {
 
   // Add markers based on the 'trails' data
   useEffect(() => {
+    console.log("hello");
+    console.log("trails", trails);
     if (trails) {
       trails.forEach((trail) => {
+        console.log(trail.lat, trail.lon);
         if (trail.lat && trail.lon) {
           L.marker([trail.lat, trail.lon]).addTo(mapRef.current);
         }
