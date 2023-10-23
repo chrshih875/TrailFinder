@@ -40,7 +40,7 @@ export const TrailFinder = () => {
       console.log("Locaations", locations)
       const distanceResponse = await getDistance(locations);
       console.log(direction)
-      // console.log("distanceresponse", distanceResponse);
+      console.log("distanceresponse", distanceResponse);
       getTrails(direction);
     };
 
