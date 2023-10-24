@@ -32,6 +32,7 @@ public class DrivingInput : Controller
                 {
                     response.EnsureSuccessStatusCode();
                     var body = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine("HELLLO");
                     Console.WriteLine(body);
                     JObject jsonObject = JObject.Parse(body);
                     if (string.IsNullOrWhiteSpace(jsonObject["data"]?.ToString())){
