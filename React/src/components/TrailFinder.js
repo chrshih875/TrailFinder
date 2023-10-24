@@ -5,7 +5,8 @@ import MyMapComponent from './Map';
 export const TrailFinder = () => {
     const [direction, setDirection] = useState([]);
     const [trail, setTraill] = useState([]);
-    const [search, setSearch] = useState(false);
+    // const [search, setSearch] = useState(false);
+    // const [locations, setLocations] = useState(null);
 
     const getTrails = async (Locations) => {
       try {
@@ -28,37 +29,45 @@ export const TrailFinder = () => {
       return response;
     };
 
-    const getDistance = (info) => {
-        axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`)
-        .then((response) => setDirection(response.data.data))
-        .catch((err) => {console.log(err)});
-        console.log("direction", direction)
-    }
-
-    // const handleSearch = async (locations) => {
-    //   setSearch(true)
-    //   // console.log("Locaations", locations)
-    //   await getDistance(locations);
-    //   // console.log(direction)
-    //   // console.log("distanceresponse", distanceResponse);
-    //   getTrails(direction);
-    // };
-
-    useEffect(() => {
-      if (search) {
-        // Handle the search when 'search' state changes
-        const locations = /* your location data */;
-        (async () => {
-          try {
-            const distanceResponse = await getDistance(locations);
-            setDirection(distanceResponse);
-            getTrails(distanceResponse);
-          } catch (err) {
-            console.log(err);
-          }
-        })();
+    // const getDistance = (info) => {
+    //     axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`)
+    //     .then((response) => setDirection(response.data.data))
+    //     .catch((err) => {console.log(err)});
+    // }
+    const getDistance = async (info) => {
+      try {
+        const response = await axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`);
+        setDirection(response.data.data);
+      } catch (err) {
+        console.log(err);
       }
-    }, [search]);
+    };
+
+
+    const handleSearch = async (locations) => {
+      try {
+        const distanceResponse = await getDistance(locations); // Wait for getDistance to complete
+        console.log("direction", direction)
+        getTrails(direction);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    // useEffect(() => {
+    //   if (search && locations) {
+    //     // Handle the search when 'search' state changes and 'locations' is not null
+    //     (async () => {
+    //       try {
+    //         setDirection(distanceResponse);
+    //         getTrails(distanceResponse);
+    //       } catch (err) {
+    //         console.log(err);
+    //       }
+    //     })();
+    //   }
+    // }, [search, locations]);
+
 
     return (
       <div style={{ position: 'relative' }}>
@@ -67,8 +76,7 @@ export const TrailFinder = () => {
       <div className="overlay">
         <div className="overlay-container">
           <h1>Trail Finder</h1>
-          {/* <SearchForm onSearch={handleSearch} /> */}
-          <SearchForm onSearch={() => setSearch(true)} />
+          <SearchForm onSearch={handleSearch} />
         </div>
       </div>
     </div>
