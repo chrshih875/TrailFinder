@@ -9,7 +9,19 @@ function MyMapComponent({ trails }) {
   // Initialize the map when the component mounts
   useEffect(() => {
     if (!mapRef.current) {
-      mapRef.current = L.map(mapContainerRef.current).setView([33.83052, -117.76536], 13);
+      console.log("map false");
+      // mapRef.current = L.map(mapContainerRef.current).setView([33.83052, -117.76536], 13);
+      if (trails && trails.length > 0) {
+        console.log("trail true");
+        // If there are trails, set the view based on the first trail's coordinates
+        const firstTrail = trails[0];
+        mapRef.current = L.map(mapContainerRef.current).setView([firstTrail.lat, firstTrail.lon], 13);
+      } else {
+        console.log("trail false");
+
+        // If no trails are available, set the view to show the entire US
+        mapRef.current = L.map(mapContainerRef.current).setView([37.0902, -95.7129], 5); // Coordinates for the US
+      }
 
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -24,12 +36,12 @@ function MyMapComponent({ trails }) {
         position: 'bottomright'
       }).addTo(mapRef.current);
     }
-  }, []);
+  }, [trails]);
 
   // Add markers based on the 'trails' data
   useEffect(() => {
-    console.log("hello");
-    console.log("trails", trails);
+    // console.log("hello");
+    // console.log("trails", trails);
     if (trails) {
       trails.forEach((trail) => {
         console.log(trail.lat, trail.lon);
