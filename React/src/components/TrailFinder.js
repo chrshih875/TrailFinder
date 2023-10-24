@@ -29,11 +29,6 @@ export const TrailFinder = () => {
       return response;
     };
 
-    // const getDistance = (info) => {
-    //     axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`)
-    //     .then((response) => setDirection(response.data.data))
-    //     .catch((err) => {console.log(err)});
-    // }
     const getDistance = async (info) => {
       try {
         const response = await axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`);
@@ -42,7 +37,6 @@ export const TrailFinder = () => {
         console.log(err);
       }
     };
-
 
     const handleSearch = async (locations) => {
       try {
@@ -53,21 +47,6 @@ export const TrailFinder = () => {
         console.log(err);
       }
     };
-
-    // useEffect(() => {
-    //   if (search && locations) {
-    //     // Handle the search when 'search' state changes and 'locations' is not null
-    //     (async () => {
-    //       try {
-    //         setDirection(distanceResponse);
-    //         getTrails(distanceResponse);
-    //       } catch (err) {
-    //         console.log(err);
-    //       }
-    //     })();
-    //   }
-    // }, [search, locations]);
-
 
     return (
       <div style={{ position: 'relative' }}>
