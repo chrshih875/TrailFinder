@@ -12,9 +12,17 @@ public class DrivingInput : Controller
             try
             {
                 Console.WriteLine("INFO");
-                Console.WriteLine(info);
-                // string newOrigin = info.Origin.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
-                // string newEndpoint = info.Endpoint.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
+                // var hehe = info.Origin.GetType();
+                // Console.WriteLine(hehe);
+                if (info.Origin.GetType() == typeof(string))
+                {
+                    Console.WriteLine("it is a string");
+                    info.Origin = info.Origin.Replace(",", "%").Replace(" ", "%");
+                }
+                if (info.Endpoint.GetType() == typeof(string))
+                {
+                    info.Endpoint = info.Endpoint.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
+                }
                 var client = new HttpClient();
                 var request = new HttpRequestMessage
             {
@@ -32,8 +40,7 @@ public class DrivingInput : Controller
                 {
                     response.EnsureSuccessStatusCode();
                     var body = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine("HELLLO");
-                    Console.WriteLine(body);
+
                     JObject jsonObject = JObject.Parse(body);
                     if (string.IsNullOrWhiteSpace(jsonObject["data"]?.ToString())){
                         throw new Exception();
