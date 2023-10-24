@@ -4,17 +4,17 @@ import { SearchForm } from './SearchForm';
 import MyMapComponent from './Map';
 export const TrailFinder = () => {
     const [direction, setDirection] = useState([]);
-    const [trail, setTraill] = useState([]);
+    const [trail, setTrail] = useState([]);
     // const [search, setSearch] = useState(false);
     // const [locations, setLocations] = useState(null);
 
     const getTrails = async (Locations) => {
       try {
         // console.log("Locations", Locations)
-        const data = await getAvergae(Locations);
+        const data = getAvergae(Locations);
         // console.log("DATA", data);
-        await axios.get(`http://localhost:7080/trails?latitude=${data.point1}&longitude=${data.point2}`)
-        .then((response) => setTraill(response.data.data));
+        const response = await axios.get(`http://localhost:7080/trails?latitude=${data.point1}&longitude=${data.point2}`);
+        setTrail(response.data.data);
         // console.log(trail);
       } catch (err) {
         console.log(err);
@@ -29,8 +29,16 @@ export const TrailFinder = () => {
       return response;
     };
 
+    useEffect(() => {
+      if (direction.length > 0) {
+        getTrails(direction);
+      }
+    }, [direction]);
+
     const getDistance = async (info) => {
       try {
+        console.log("DOES THIS WPORK");
+        console.log(info)
         const response = await axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`);
         console.log("RESPOJNSE", response)
         setDirection(response.data.data);
@@ -41,9 +49,7 @@ export const TrailFinder = () => {
 
     const handleSearch = async (locations) => {
       try {
-        const distanceResponse = await getDistance(locations); // Wait for getDistance to complete
-        console.log("direction", direction)
-        getTrails(direction);
+        await getDistance(locations); // Wait for getDistance to complete
       } catch (err) {
         console.log(err);
       }

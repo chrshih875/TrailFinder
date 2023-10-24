@@ -11,7 +11,7 @@ function MyMapComponent({ trails }) {
     if (!mapRef.current) {
       console.log("map false");
       // mapRef.current = L.map(mapContainerRef.current).setView([33.83052, -117.76536], 13);
-      if (trails && trails.length > 0) {
+      if (trails) {
         console.log("trail true");
         // If there are trails, set the view based on the first trail's coordinates
         const firstTrail = trails[0];

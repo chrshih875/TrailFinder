@@ -17,7 +17,7 @@ public class DrivingInput : Controller
                 if (info.Origin.GetType() == typeof(string))
                 {
                     Console.WriteLine("it is a string");
-                    info.Origin = info.Origin.Replace(",", "%").Replace(" ", "%");
+                    info.Origin = info.Origin.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
                 }
                 if (info.Endpoint.GetType() == typeof(string))
                 {
@@ -42,6 +42,8 @@ public class DrivingInput : Controller
                     var body = await response.Content.ReadAsStringAsync();
 
                     JObject jsonObject = JObject.Parse(body);
+                    Console.WriteLine("AHAHAHA");
+                    Console.WriteLine(jsonObject);
                     if (string.IsNullOrWhiteSpace(jsonObject["data"]?.ToString())){
                         throw new Exception();
                     }
