@@ -10,19 +10,19 @@ export const TrailFinder = () => {
 
     const getTrails = async (Locations) => {
       try {
-        console.log("Locations", Locations)
-        // const data = getAvergae(Locations);
+        // console.log("Locations", Locations)
+        const data = getAvergae(Locations);
         // console.log("DATA", data);
         const response = await axios.get(`http://localhost:7080/trails?latitude=${data.point1}&longitude=${data.point2}`);
         setTrail(response.data.data);
-        console.log(trail);
+        // console.log(trail);
       } catch (err) {
         console.log(err);
       }
     };
 
     const getAvergae = (dataPoints) => {
-      console.log("DTATApoints", dataPoints)
+      // console.log("DTATApoints", dataPoints)
       const x = (dataPoints.origin.latitude + dataPoints.destination.latitude) / 2;
       const y = (dataPoints.origin.longitude + dataPoints.destination.longitude) / 2;
       const response = { point1: x, point2: y };
@@ -37,10 +37,10 @@ export const TrailFinder = () => {
 
     const getDistance = async (info) => {
       try {
-        console.log("DOES THIS WPORK");
-        console.log(info)
+        // console.log("DOES THIS WPORK");
+        // console.log(info)
         const response = await axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`);
-        console.log("RESPOJNSE", response)
+        // console.log("RESPOJNSE", response)
         setDirection(response.data.data);
       } catch (err) {
         console.log(err);
