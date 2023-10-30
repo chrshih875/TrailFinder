@@ -40,7 +40,7 @@ export const TrailFinder = () => {
         // console.log("DOES THIS WPORK");
         // console.log(info)
         const response = await axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`);
-        // console.log("RESPOJNSE", response)
+        console.log("RESPOJNSE", response)
         setDirection(response.data.data);
       } catch (err) {
         console.log(err);
