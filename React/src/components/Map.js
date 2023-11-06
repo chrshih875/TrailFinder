@@ -41,7 +41,7 @@ function MyMapComponent({ trails }) {
   // Add markers based on the 'trails' data
   useEffect(() => {
     // console.log("hello");
-    // console.log("trails", trails);
+    console.log("trails", trails);
     if (trails) {
       trails.forEach((trail) => {
         console.log(trail.lat, trail.lon);
