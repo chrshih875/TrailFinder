@@ -39,18 +39,18 @@ function MyMapComponent({ trails }) {
   }, [trails]);
 
   // Add markers based on the 'trails' data
-  useEffect(() => {
-    // console.log("hello");
-    console.log("trails", trails);
-    if (trails) {
-      trails.forEach((trail) => {
-        console.log(trail.lat, trail.lon);
-        if (trail.lat && trail.lon) {
-          L.marker([trail.lat, trail.lon]).addTo(mapRef.current);
-        }
-      });
-    }
-  }, [trails]);
+  // useEffect(() => {
+  //   // console.log("hello");
+  //   console.log("trails", trails);
+  //   if (trails) {
+  //     trails.forEach((trail) => {
+  //       console.log(trail.lat, trail.lon);
+  //       if (trail.lat && trail.lon) {
+  //         L.marker([trail.lat, trail.lon]).addTo(mapRef.current);
+  //       }
+  //     });
+  //   }
+  // }, [trails]);
 
   return <div ref={mapContainerRef} style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}></div>;
 }
