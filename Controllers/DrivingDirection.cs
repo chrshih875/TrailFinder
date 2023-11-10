@@ -11,23 +11,47 @@ public class DrivingInput : Controller
         {
             try
             {
-                // var hehe = info.Origin.GetType();
-                // Console.WriteLine(hehe);
-                string[] origin = info.Origin.Split(", ");
-                if (origin.Length > 0 && origin.Length <= 2)
+                // string[] origin = info.Origin.Split(", ");
+                // Console.WriteLine("HELLO");
+                // Console.WriteLine(origin);
+                // if (origin.Length > 0 && origin.Length <= 2)
+                // {
+                //     info.Origin = origin[0] + "%2C%20" + origin[1];
+                //     Console.WriteLine(info.Origin)
+                // }else
+                // {
+                // }
+
+                // string[] endpoint = info.Endpoint.Split(", ");
+                // if (endpoint.Length > 0 && endpoint.Length <= 2)
+                // {
+                //     info.Endpoint = endpoint[2] + "%2C%20" + endpoint[3];
+                // }else
+                // {
+                // }
+                string[] coords = info.Origin.Split(", ");
+                if (coords.Length == 2 && double.TryParse(coords[0], out _) && double.TryParse(coords[1], out _))
                 {
-                    info.Origin = origin[0] + "%2C%20" + origin[1];
-                }else
-                {
-                    info.Origin = info.Origin.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
+                    Console.WriteLine("Coordinates passed");
                 }
-                string[] endpoint = info.Endpoint.Split(", ");
-                if (endpoint.Length > 0 && endpoint.Length <= 2)
+                else
                 {
-                    info.Endpoint = endpoint[2] + "%2C%20" + endpoint[3];
-                }else
+                    // Input 1 is not coordinates, assume it's an address
+                    info.Origin = info.Origin.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
+                    Console.WriteLine("Input 1 is not coordinates, assumed to be an address");
+                }
+                string[] coords1 = info.Endpoint.Split(", ");
+                if (coords1.Length == 2 && double.TryParse(coords1[0], out _) && double.TryParse(coords1[1], out _))
                 {
-                    info.Endpoint = info.Endpoint.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
+                    // It's coordinates, no further action needed
+                    Console.WriteLine("Coordinates passed");
+                }
+                else
+                {
+                    // Handle the non-coordinate input
+                info.Endpoint = info.Endpoint.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
+
+                    Console.WriteLine("Non-coordinate input: " + coords1);
                 }
 
                 var client = new HttpClient();
