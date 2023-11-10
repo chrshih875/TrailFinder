@@ -40,7 +40,6 @@ function MyMapComponent({ trails }) {
     // console.log("hello");
     if (trails) {
       trails.forEach((trail) => {
-        console.log(trail.lat, trail.lon);
         if (trail.lat && trail.lon) {
           L.marker([trail.lat, trail.lon]).addTo(mapRef.current);
         }
