@@ -39,9 +39,16 @@ function MyMapComponent({ trails }) {
   useEffect(() => {
     // console.log("hello");
     if (trails) {
+
+      const customIcon = L.icon({
+        iconUrl: require('./trail_icon.png'), // Replace this with the path to your custom marker icon
+        iconSize: [20, 20], // Adjust the size of the icon
+        iconAnchor: [20, 40], // Adjust the anchor point of the icon
+      });
+
       trails.forEach((trail) => {
         if (trail.lat && trail.lon) {
-          L.marker([trail.lat, trail.lon]).addTo(mapRef.current);
+          L.marker([trail.lat, trail.lon], { icon: customIcon }).addTo(mapRef.current);
         }
       });
     }
