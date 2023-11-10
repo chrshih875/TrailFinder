@@ -13,15 +13,23 @@ public class DrivingInput : Controller
             {
                 // var hehe = info.Origin.GetType();
                 // Console.WriteLine(hehe);
-                if (info.Origin.GetType() == typeof(string))
+                string[] origin = info.Origin.Split(", ");
+                if (origin.Length > 0 && origin.Length <= 2)
                 {
-                    Console.WriteLine("it is a string");
+                    info.Origin = origin[0] + "%2C%20" + origin[1];
+                }else
+                {
                     info.Origin = info.Origin.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
                 }
-                if (info.Endpoint.GetType() == typeof(string))
+                string[] endpoint = info.Endpoint.Split(", ");
+                if (endpoint.Length > 0 && endpoint.Length <= 2)
+                {
+                    info.Endpoint = endpoint[2] + "%2C%20" + endpoint[3];
+                }else
                 {
                     info.Endpoint = info.Endpoint.Replace(",", "%").Replace(" ", "%").Replace("&", "%");
                 }
+
                 var client = new HttpClient();
                 var request = new HttpRequestMessage
             {
