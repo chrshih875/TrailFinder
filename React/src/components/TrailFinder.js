@@ -44,6 +44,8 @@ export const TrailFinder = () => {
       try {
         // console.log("DOES THIS WPORK");
         console.log("HELLO", info)
+        // 'http://localhost:7080/direction?Origin=Church St %26 29th St, San-Francisco, CA, USA&Endpoint=145 5th Ave, New York, NY, USA'
+        console.log(info.lat);
         const response = await axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`);
         if (response.data.data == null){
           console.log("DATA IS NULL")
@@ -55,7 +57,8 @@ export const TrailFinder = () => {
         console.log(err);
       }
     };
-
+    // https://driving-directions1.p.rapidapi.com/get-directions?origin=Church%25St%29th%25St%25%25San-Francisco%25%CA%25%25USA&destination=145%255th%25Ave%25%25New%25York%25%25NY%25%25USA&avoid_routes=tolls%2Cferries&country=us&language=en
+    // https://driving-directions1.p.rapidapi.com/get-directions?origin=Church%25St%25&destination=145%255th%25Ave%25%25New%25York%25%25NY%25%25USA&avoid_routes=tolls%2Cferries&country=us&language=en
     const handleSearch = async (locations) => {
       try {
         setIsLoading(true);
