@@ -12,7 +12,6 @@ export const TrailFinder = () => {
     const getTrails = async (Locations) => {
       try {
         const data = getAvergae(Locations);
-        console.log("DATA", data);
         const response = await axios.get(`http://localhost:7080/trails?latitude=${data.point1}&longitude=${data.point2}`);
         setTrail(response.data.data);
       } catch (err) {
