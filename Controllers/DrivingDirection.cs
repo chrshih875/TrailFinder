@@ -11,7 +11,6 @@ public class DrivingInput : Controller
         {
             try
             {
-                Console.WriteLine("INFO");
                 // var hehe = info.Origin.GetType();
                 // Console.WriteLine(hehe);
                 if (info.Origin.GetType() == typeof(string))

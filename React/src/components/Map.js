@@ -5,14 +5,11 @@ import 'leaflet/dist/leaflet.css';
 function MyMapComponent({ trails }) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
-
   // Initialize the map when the component mounts
   useEffect(() => {
     if (!mapRef.current) {
-      console.log("map false");
       // mapRef.current = L.map(mapContainerRef.current).setView([33.83052, -117.76536], 13);
-      if (trails) {
-        console.log("trail true");
+      if (trails.length>0) {
         // If there are trails, set the view based on the first trail's coordinates
         const firstTrail = trails[0];
         mapRef.current = L.map(mapContainerRef.current).setView([firstTrail.lat, firstTrail.lon], 13);
@@ -41,7 +38,6 @@ function MyMapComponent({ trails }) {
   // Add markers based on the 'trails' data
   useEffect(() => {
     // console.log("hello");
-    console.log("trails", trails);
     if (trails) {
       trails.forEach((trail) => {
         console.log(trail.lat, trail.lon);

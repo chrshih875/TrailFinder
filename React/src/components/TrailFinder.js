@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { SearchForm } from './SearchForm';
 import MyMapComponent from './Map';
+import LoadingSpinner from './LoadingSpinner';
+
 export const TrailFinder = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const [direction, setDirection] = useState([]);
     const [trail, setTrail] = useState([]);
     // const [search, setSearch] = useState(false);
@@ -12,7 +15,7 @@ export const TrailFinder = () => {
       try {
         // console.log("Locations", Locations)
         const data = getAvergae(Locations);
-        // console.log("DATA", data);
+        console.log("DATA", data);
         const response = await axios.get(`http://localhost:7080/trails?latitude=${data.point1}&longitude=${data.point2}`);
         setTrail(response.data.data);
         // console.log(trail);
@@ -30,6 +33,8 @@ export const TrailFinder = () => {
     };
 
     useEffect(() => {
+      // direction.length > 0 &&
+      console.log("DIRECTION", direction)
       if (direction.length > 0) {
         getTrails(direction);
       }
@@ -38,10 +43,14 @@ export const TrailFinder = () => {
     const getDistance = async (info) => {
       try {
         // console.log("DOES THIS WPORK");
-        // console.log(info)
+        console.log("HELLO", info)
         const response = await axios.get(`http://localhost:7080/direction?Origin=${info.lat}&Endpoint=${info.long}`);
-        console.log("RESPOJNSE", response)
-        setDirection(response.data.data);
+        if (response.data.data == null){
+          console.log("DATA IS NULL")
+        } else{
+          setDirection(response.data.data);
+        }
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -49,6 +58,7 @@ export const TrailFinder = () => {
 
     const handleSearch = async (locations) => {
       try {
+        setIsLoading(true);
         await getDistance(locations); // Wait for getDistance to complete
       } catch (err) {
         console.log(err);
