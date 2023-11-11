@@ -14,7 +14,7 @@ function MyMapComponent({ trails }) {
         const firstTrail = trails[0];
         mapRef.current = L.map(mapContainerRef.current).setView([firstTrail.lat, firstTrail.lon], 13);
       } else {
-        console.log("trail false");
+        // console.log("trail false");
 
         // If no trails are available, set the view to show the entire US
         mapRef.current = L.map(mapContainerRef.current).setView([37.0902, -95.7129], 5); // Coordinates for the US
