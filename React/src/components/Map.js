@@ -54,7 +54,7 @@ function MyMapComponent({ trails }) {
     }
   }, [trails]);
 
-  return <div ref={mapContainerRef} style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}></div>;
+  // return <div ref={mapContainerRef} style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}></div>;
 }
 
 export default MyMapComponent;
