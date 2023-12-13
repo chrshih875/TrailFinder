@@ -37,7 +37,7 @@ function MyMapComponent({ trails }) {
 
   // Add markers based on the 'trails' data
   useEffect(() => {
-    // console.log("hello");
+    console.log("hello");
     if (trails) {
 
       const customIcon = L.icon({
