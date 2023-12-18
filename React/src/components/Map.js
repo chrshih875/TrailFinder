@@ -43,7 +43,7 @@ function MyMapComponent({ trails }) {
       const customIcon = L.icon({
         iconUrl: require('./trail_icons.jpg'), // Replace this with the path to your custom marker icon
         iconSize: [25, 25], // Adjust the size of the icon
-        iconAnchor: [20, 40], // Adjust the anchor point of the icon
+        // iconAnchor: [20, 40], // Adjust the anchor point of the icon
       });
 
       trails.forEach((trail) => {
